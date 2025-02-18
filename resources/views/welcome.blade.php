@@ -23,7 +23,7 @@
                                 <h1 class="font-bold text-xl md:text-2xl text-gray-50 relative z-10">
                                     {{ $movie->title }}
                                 </h1>
-                                <p class="font-normal text-sm text-gray-50 relative z-10 my-4">
+                                <p class="font-normal text-sm text-gray-50 relative z-10 my-4 truncate">
                                     {{ $movie->description }}
                                 </p>
                             </div>

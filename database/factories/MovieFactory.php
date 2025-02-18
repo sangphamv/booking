@@ -17,12 +17,14 @@ class MovieFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence,
+            'title' => implode(' ', $this->faker->words(10)),
             'category' => $this->faker->word,
-            'duration' => $this->faker->numberBetween(60, 180),
-            'release_date' => $this->faker->dateTimeBetween('now', '+30 days')->format('Y-m-d'),            'description' => $this->faker->paragraph,
+            'duration' => $this->faker->numberBetween(90, 180),
+            'release_date' => $this->faker->dateTimeBetween('now', '+30 days')->format('Y-m-d'),
+            'description' => $this->faker->paragraph,
             'trailer' => $this->faker->url,
-            'image' => $this->faker->imageUrl,
+//            'image' => $this->faker->imageUrl,
+            'image' => 'https://source.unsplash.com/random/800x600',
             'price' => $this->faker->randomFloat(2, 5, 20),
         ];
     }

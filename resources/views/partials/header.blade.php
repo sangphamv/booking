@@ -1,24 +1,42 @@
 <nav class="bg-white/80 backdrop-blur-[15px] backdrop-saturate-[150%] fixed w-full z-20 top-0 start-0 border-b border-gray-200">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-6">
         <x-logo>
-            Laravel
+            SHOKARTH
         </x-logo>
         <div class="flex gap-2 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             @if (Route::has('login'))
                 <div class="text-right z-10">
                     @auth
-                        <a href="{{ route('welcome') }}" class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Về trang chủ</a>
+                        {{--                        <a href="{{ route('welcome') }}" class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Dashboard</a>--}}
+                        @if(Auth::check())
+                            @if(Auth::user()->role === 'admin')
+                                <a href="{{ route('admin.dashboard') }}"
+                                   class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 mr-2">
+                                    {{ Auth::user()->name }}
+                                </a>
+                            @else
+                                <a href="{{ route('user.dashboard') }}"
+                                   class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 mr-2">
+                                    {{ Auth::user()->name }}
+                                </a>
+                            @endif
+                        @endif
                         <form method="POST" action="{{ route('logout') }}" class="inline">
                             @csrf
-                            <button type="submit" class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+                            <button type="submit"
+                                    class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
                                 Đăng xuất
                             </button>
                         </form>
                     @else
-                        <a href="{{ route('login') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">Đăng nhập</a>
+                        <a href="{{ route('login') }}"
+                           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">Đăng
+                            nhập</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Đăng ký</a>
+                            <a href="{{ route('register') }}"
+                               class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Đăng
+                                ký</a>
                         @endif
                     @endauth
                 </div>
