@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CinemaController;
+use App\Http\Controllers\ShowtimeController;
 
 Route::get('/', [MovieController::class, 'indexWelcome'])->name('welcome');
 
@@ -25,6 +27,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('dashboard', [AuthController::class, 'adminDashboard'])->name('dashboard');
     Route::resource('user', UserController::class);
     Route::resource('movie', MovieController::class);
+    Route::resource('cinema', CinemaController::class);
+    Route::resource('showtime', ShowtimeController::class);
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {

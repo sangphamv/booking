@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Quản lý tài khoản')
+@section('title', 'Quản lý rạp chiếu phim')')
 
 @section('content')
     <div
@@ -14,10 +14,10 @@
                     >
                         <li class="inline-flex items-center">
                             <a
-                                href="{{ route('admin.user.index') }}"
+                                href="{{ route('admin.cinema.index') }}"
                                 class="inline-flex items-center text-gray-700 hover:text-blue-600 :text-gray-300 :hover:text-white"
                             >
-                                Quản lý tài khoản
+                                Quản lý rap chiếu phim
                             </a>
                         </li>
                         <li>
@@ -37,7 +37,7 @@
                                 <a
                                     href="#"
                                     class="ml-1 text-gray-700 hover:text-blue-600 md:ml-2 :text-gray-300 :hover:text-white"
-                                >Tất cả tài khoản</a
+                                >Tất cả rạp chiếu phim</a
                                 >
                             </div>
                         </li>
@@ -46,7 +46,7 @@
                 <h1
                     class="text-xl font-semibold text-gray-900 sm:text-2xl :text-white"
                 >
-                    Tất cả tài khoản
+                    Tất cả rạp chiếu phim
                 </h1>
             </div>
             <div class="sm:flex">
@@ -78,7 +78,7 @@
                         Refresh
                     </button>
                     <a
-                        href="{{ route('admin.user.create') }}"
+                        href="{{ route('admin.cinema.create') }}"
                         type="button"
                         class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto"
                     >
@@ -94,7 +94,7 @@
                                 clip-rule="evenodd"></path>
                         </svg
                         >
-                        Thêm tài khoản
+                        Thêm rạp chiếu phim
                     </a>
                 </div>
             </div>
@@ -111,37 +111,25 @@
                         <tr>
                             <th
                                 scope="col"
-                                class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
+                                class="p-4 text-xs font-medium text-left text-gray-500 uppercase"
                             >
                                 ID
                             </th>
                             <th
                                 scope="col"
-                                class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
+                                class="p-4 text-xs font-medium text-left text-gray-500 uppercase"
                             >
-                                Tên người dùng
-                            </th>
-                            <th
-                                scope="col"
-                                class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
-                            >
-                                Email
+                                Tên rạp chiếu phim
                             </th>
                             <th
                                 scope="col"
                                 class="p-4 text-xs font-medium text-left text-gray-500 uppercase"
                             >
-                                Mật khẩu
+                                Địa chỉ
                             </th>
                             <th
                                 scope="col"
-                                class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
-                            >
-                                Vai trò
-                            </th>
-                            <th
-                                scope="col"
-                                class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
+                                class="p-4 text-xs font-medium text-left text-gray-500 uppercase"
                             >
                                 Chức năng
                             </th>
@@ -150,28 +138,22 @@
                         <tbody
                             class="bg-white divide-y divide-gray-200"
                         >
-                        @foreach($users as $user)
+                        @foreach($cinemas as $cinema)
                             <div>
                                 <tr class="hover:bg-gray-100">
                                     <td class="p-4 text-base text-center font-medium text-gray-900 whitespace-nowrap">
-                                        {{ $user->id }}
+                                        {{ $cinema->id }}
                                     </td>
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                        {{ $user->name }}
+                                        {{ $cinema->name }}
                                     </td>
                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                        {{ $user->email }}
-                                    </td>
-                                    <td class="p-4 max-w-xs text-base font-medium text-gray-900 whitespace-nowrap truncate">
-                                        {{ $user->password }}
-                                    </td>
-                                    <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                        {{ $user->role }}
+                                        {{ $cinema->location }}
                                     </td>
                                     <td class="p-4 space-x-2 whitespace-nowrap">
                                         <a
-                                            href="{{ route('admin.user.edit', $user->id) }}"
-                                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300"
+                                            href="{{ route('admin.cinema.edit', $cinema->id) }}"
+                                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 :bg-blue-600 :hover:bg-blue-700 :focus:ring-blue-800"
                                         >
                                             <svg
                                                 class="w-4 h-4 mr-2"
@@ -190,10 +172,10 @@
                                             Sửa
                                         </a>
                                         <form
-                                            action="{{ route('admin.user.destroy', $user->id) }}"
+                                            action="{{ route('admin.cinema.destroy', $cinema->id) }}"
                                             method="POST"
                                             class="inline-flex"
-                                            onsubmit="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?');">
+                                            onsubmit="return confirm('Bạn có chắc chắn muốn xóa rạp chiếu phim này không?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"

@@ -4,7 +4,7 @@
 
 @extends('layouts.admin')
 
-@section('title', 'Quản lý phim')
+@section('title', 'Quản lý suất chiếu')
 
 @section('content')
     <div
@@ -52,7 +52,7 @@
                                 <a
                                     href="#"
                                     class="ml-1 text-gray-700 hover:text-blue-600 md:ml-2 "
-                                >Quản lý phim</a
+                                >Quản lý suất chiếu</a
                                 >
                             </div>
                         </li>
@@ -71,7 +71,7 @@
                                 </svg
                                 >
                                 <span
-                                    class="ml-1 text-gray-400 md:ml-2 ">Tất cả phim</span
+                                    class="ml-1 text-gray-400 md:ml-2 ">Tất cả suất chiếu</span
                                 >
                             </div>
                         </li>
@@ -80,7 +80,7 @@
                 <h1
                     class="text-xl font-semibold text-gray-900 sm:text-2xl :text-white"
                 >
-                    Tất cả phim
+                    Tất cả suất chiếu
                 </h1>
             </div>
             <div class="items-center justify-between block sm:flex">
@@ -110,7 +110,7 @@
                         Refresh
                     </button>
                     <a
-                        href="{{route('admin.movie.create')}}"
+                        href="{{route('admin.showtime.create')}}"
                         class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto :bg-blue-600 :hover:bg-blue-700 :focus:ring-blue-800"
                     >
                         <svg
@@ -125,7 +125,7 @@
                                 clip-rule="evenodd"></path>
                         </svg
                         >
-                        Thêm phim
+                        Thêm suất chiếu
                     </a>
                 </div>
             </div>
@@ -156,25 +156,25 @@
                                 scope="col"
                                 class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
                             >
-                                Thể loại
+                                Tên rạp
                             </th>
                             <th
                                 scope="col"
                                 class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
                             >
-                                Thời lượng
+                                Ngày chiếu
                             </th>
                             <th
                                 scope="col"
                                 class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
                             >
-                                Ngày ra mắt
+                                Giờ bắt đầu
                             </th>
                             <th
                                 scope="col"
                                 class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
                             >
-                                Giá vé
+                                Giờ kết thúc
                             </th>
                             <th
                                 scope="col"
@@ -188,45 +188,26 @@
                         <tbody
                             class="bg-white divide-y divide-gray-200 :bg-gray-800 :divide-gray-700"
                         >
-                        @foreach($movies as $movie)
+                        @foreach($showtimes as $showtime)
                             <tr class="hover:bg-gray-100">
                                 <td class="p-4 text-center text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $movie->id }}
+                                    {{ $showtime->id }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 max-w-sm truncate">
-                                    {{ $movie->title }}
+                                    {{ $showtime->movie->id }} - {{ $showtime->movie->title }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $movie->category }}
+                                    {{ $showtime->cinema->id }} - {{ $showtime->cinema->name }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $movie->duration }} phút
-                                </td>
+                                    {{ \Carbon\Carbon::parse($showtime->start_time)->format('d/m/Y') }}                                </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ Carbon::parse($movie->release_date)->format('d-m-Y') }}
-                                </td>
+                                    {{ \Carbon\Carbon::parse($showtime->start_time)->format('H:i') }}                                </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ number_format($movie->price, 0, ',', '.') }}&#8363;
-                                </td>
+                                    {{ \Carbon\Carbon::parse($showtime->end_time)->format('H:i') }}                                </td>
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <a
-                                        href="{{ route('admin.movie.show', $movie->id) }}"
-                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 :bg-blue-600 :hover:bg-blue-700 :focus:ring-blue-800"
-                                    >
-                                        <svg
-                                            class="w-4 h-4 mr-2"
-                                            aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Z"/>
-                                            <path fill-rule="evenodd"
-                                                  d="M11 7V2h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Zm4.707 5.707a1 1 0 0 0-1.414-1.414L11 14.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4Z"
-                                                  clip-rule="evenodd"/>
-                                        </svg>
-                                        Chi tiết
-                                    </a>
-                                    <a
-                                        href="{{ route('admin.movie.edit', $movie->id) }}"
+                                        href="{{ route('admin.showtime.edit', $showtime->id) }}"
                                         class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 :bg-blue-600 :hover:bg-blue-700 :focus:ring-blue-800"
                                     >
                                         <svg
@@ -246,7 +227,7 @@
                                         Sửa
                                     </a>
                                     <form
-                                        action="{{ route('admin.movie.destroy', $movie->id) }}"
+                                        action="{{ route('admin.showtime.destroy', $showtime->id) }}"
                                         method="POST"
                                         class="inline-flex"
                                         onsubmit="return confirm('Bạn có chắc chắn muốn xóa phim dùng này không?');">

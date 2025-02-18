@@ -11,7 +11,7 @@ class CinemaController extends Controller
     public function index()
     {
         $cinemas = Cinema::all();
-        return view('admin.cinema.index', compact('cinemas'));
+        return view('admin.cinema', compact('cinemas'));
     }
 
     // 2. Show the form for creating a new resource.
