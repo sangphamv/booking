@@ -15,7 +15,6 @@
 
                         <h1 class="text-gray-100 text-6xl font-bold">Admin Dashboard</h1>
                     </div>
-
                 </div>
                 <div class="grid grid-cols-5 gap-4 mb-4 justify-center items-center">
                     <div

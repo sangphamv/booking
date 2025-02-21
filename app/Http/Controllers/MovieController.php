@@ -16,8 +16,14 @@ class MovieController extends Controller
 
     public function indexWelcome()
     {
-        $movies = Movie::take(8)->get();
-        return view('welcome', compact('movies'));
+        $movies = Movie::orderBy('release_date', 'desc')->take(4)->get();
+        $movies1 = Movie::where('category', 'Kinh dị')
+            ->take(4)
+            ->get();
+        $movies2 = Movie::where('category', 'Hành động')
+            ->take(4)
+            ->get();
+        return view('welcome', compact('movies', 'movies1', 'movies2'));
     }
 
     public function indexListMovie()
@@ -55,6 +61,11 @@ class MovieController extends Controller
     public function show(Movie $movie)
     {
         return view('admin.movie.show', compact('movie'));
+    }
+
+    public function showMovie(Movie $movie)
+    {
+        return view('app.show-movie', compact('movie'));
     }
 
     // 5. Hiển thị form chỉnh sửa tài nguyên (Form sửa phim)

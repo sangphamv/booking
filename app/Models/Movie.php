@@ -26,6 +26,7 @@ class Movie extends Model
         return self::query()->inRandomOrder();
     }
 
+
     public function showtimes(): HasMany
     {
         return $this->hasMany(Showtime::class);

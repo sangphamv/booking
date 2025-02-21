@@ -15,6 +15,7 @@ use App\Http\Controllers\CinemaController;
 use App\Http\Controllers\ShowtimeController;
 
 Route::get('/', [MovieController::class, 'indexWelcome'])->name('welcome');
+Route::get('/movie/{movie}', [MovieController::class, 'showMovie'])->name('movie.show');
 Route::get('/list-movie', [MovieController::class, 'indexListMovie'])->name('movie.index');
 
 

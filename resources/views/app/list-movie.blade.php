@@ -29,13 +29,14 @@
                                     class="w-1/2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300  shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-6 py-3 text-center">
                                     Mua vé
                                 </button>
-                                <button
+                                <a
+                                    href="{{ route('movie.show', $movie->id) }}"
                                     class="w-1/2 relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                                 <span
-                                    class="relative w-full px-5 py-3 transition-all ease-in duration-75 bg-gray-900 rounded-md group-hover:bg-transparent">
+                                    class="relative w-full text-center px-5 py-3 transition-all ease-in duration-75 bg-gray-900 rounded-md group-hover:bg-transparent">
                                 Xem chi tiết
                                 </span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                         <div class="text content">

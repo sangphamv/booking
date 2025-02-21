@@ -23,7 +23,6 @@ class MovieFactory extends Factory
             'release_date' => $this->faker->dateTimeBetween('now', '+30 days')->format('Y-m-d'),
             'description' => $this->faker->paragraph,
             'trailer' => $this->faker->url,
-//            'image' => $this->faker->imageUrl,
             'image' => 'https://source.unsplash.com/random/800x600',
             'price' => $this->faker->randomFloat(2, 5, 20),
         ];
