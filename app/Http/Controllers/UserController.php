@@ -79,4 +79,45 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('admin.user.index');
     }
+    ///////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
+    public function userShow($id)
+    {
+        $user = User::findOrFail($id);
+        return view('user.userShow', compact('user'));
+    }
+
+    public function userEdit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('user.userEdit', compact('user'));
+    }
+
+    public function userUpdate(Request $request, $id): \Illuminate\Http\RedirectResponse
+    {
+        $user = User::findOrFail($id);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password ? Hash::make($request->password) : $user->password,
+        ]);
+        return redirect()->route('user.show', $user->id)->with('success', 'User updated successfully');
+
+
+    }
+
+    public function userDestroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('login')->with('success', 'User deleted successfully');
+    }
 }

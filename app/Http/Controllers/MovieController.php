@@ -20,6 +20,12 @@ class MovieController extends Controller
         return view('welcome', compact('movies'));
     }
 
+    public function indexListMovie()
+    {
+        $movies = Movie::all();
+        return view('app.list-movie', compact('movies'));
+    }
+
     // 2. Hiển thị form tạo mới tài nguyên (Form thêm phim)
     public function create()
     {

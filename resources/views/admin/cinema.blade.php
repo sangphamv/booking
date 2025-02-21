@@ -156,6 +156,20 @@
                                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 :bg-blue-600 :hover:bg-blue-700 :focus:ring-blue-800"
                                         >
                                             <svg
+                                                class="w-4 h-4 mr-2" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                                viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                                      d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+                                            </svg>
+
+                                            Xem ghế
+                                        </a>
+                                        <a
+                                            href="{{ route('admin.cinema.edit', $cinema->id) }}"
+                                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 :bg-blue-600 :hover:bg-blue-700 :focus:ring-blue-800"
+                                        >
+                                            <svg
                                                 class="w-4 h-4 mr-2"
                                                 fill="currentColor"
                                                 viewBox="0 0 20 20"

@@ -17,7 +17,7 @@ class MovieFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => implode(' ', $this->faker->words(10)),
+            'title' => implode(' ', $this->faker->words(7)),
             'category' => $this->faker->word,
             'duration' => $this->faker->numberBetween(90, 180),
             'release_date' => $this->faker->dateTimeBetween('now', '+30 days')->format('Y-m-d'),

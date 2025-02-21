@@ -30,7 +30,7 @@
                     </li>
                     <li>
                         <a
-{{--                            href="{{ route('user.account') }}"--}}
+                            href="{{ route('user.show' , ['id' => Auth::user()->id]) }}"
                             class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group"
                         >
                             <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
@@ -41,7 +41,7 @@
                                 <path
                                     d="M11 6.025a1 1 0 0 0-1.065-.998 8.5 8.5 0 1 0 9.038 9.039A1 1 0 0 0 17.975 13H11V6.025Z"/>
                             </svg>
-                            <span class="ml-3">Dashboard</span>
+                            <span class="ml-3">Tài khoản</span>
                         </a>
                     </li>
                 </ul>

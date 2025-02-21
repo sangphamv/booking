@@ -15,6 +15,7 @@ use App\Http\Controllers\CinemaController;
 use App\Http\Controllers\ShowtimeController;
 
 Route::get('/', [MovieController::class, 'indexWelcome'])->name('welcome');
+Route::get('/list-movie', [MovieController::class, 'indexListMovie'])->name('movie.index');
 
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -29,8 +30,13 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('movie', MovieController::class);
     Route::resource('cinema', CinemaController::class);
     Route::resource('showtime', ShowtimeController::class);
+    Route::get('showtime/{showtime}/seat', [ShowtimeController::class, 'seat'])->name('showtime.seat');
 });
 
-Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('user/dashboard', [AuthController::class, 'userDashboard'])->name('user.dashboard');
+Route::middleware(['auth', 'role:user'])->prefix('user')->name('user.')->group(function () {
+    Route::get('/dashboard', [AuthController::class, 'userDashboard'])->name('dashboard');
+    Route::get('/{id}', [UserController::class, 'userShow'])->name('show');
+    Route::get('/{id}/edit', [UserController::class, 'userEdit'])->name('edit');
+    Route::put('/user/{id}', [UserController::class, 'userUpdate'])->name('update');
+    Route::delete('/{id}', [UserController::class, 'userDestroy'])->name('destroy');
 });
