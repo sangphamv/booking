@@ -14,8 +14,8 @@
             </p>
             <p class="text-gray-500 text-justify">{{ $movie->description }}</p>
             <button
-                class="bg-gradient-to-r from-red-500 to-orange-500 hover:scale-105 text-white font-bold py-3 px-6 rounded-2xl shadow-lg transition flex items-center gap-2">
-                🎟️ <span>Đặt Vé Ngay</span>
+                class="text-white bg-orange-500 hover:bg-orange-700 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none ">
+                <span>Đặt Vé Ngay</span>
             </button>
         </div>
         <div class="md:w-1/3 mt-6 md:mt-0 flex justify-end">

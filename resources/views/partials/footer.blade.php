@@ -8,21 +8,21 @@
             </x-logo>
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                    <a href="#" class="hover:underline me-4 md:me-6">Về chúng tôi</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                    <a href="#" class="hover:underline me-4 md:me-6">Hỗ trợ khách hàng</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                    <a href="#" class="hover:underline me-4 md:me-6">Chính sách</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline">Contact</a>
+                    <a href="#" class="hover:underline">Liên hệ</a>
                 </li>
             </ul>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-        <span class="block text-sm text-gray-500 sm:text-center">© 2025 <a href="./" class="hover:underline">Laravel</a>. All Rights Reserved.</span>
+        <span class="block text-sm text-gray-500 sm:text-center">© 2025 <a href="./" class="hover:underline">SHOKARTH</a>. All Rights Reserved.</span>
     </div>
 </footer>
 

@@ -25,10 +25,11 @@
                             <div class="absolute inset-0 flex flex-col gap-6 items-center justify-center opacity-0 group-hover/card:opacity-100 transition duration-300
                             bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px]
                             ">
-                                <button
+                                <a
+                                    href="{{ route('movie.show', $movie->id) }}"
                                     class="w-1/2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300  shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-6 py-3 text-center">
                                     Mua vé
-                                </button>
+                                </a>
                                 <a
                                     href="{{ route('movie.show', $movie->id) }}"
                                     class="w-1/2 relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 ">

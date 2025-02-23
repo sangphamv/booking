@@ -23,14 +23,14 @@ class CinemaSeeder extends Seeder
                 'name' => 'Cinema SHOKARTH - RAP 2',
                 'location' => '12 Trịnh Đình Thảo, Phường Hòa Thạnh, Quận Tân Phú, Thành phố Hồ Chí Minh',
             ],
-            [
-                'name' => 'Cinema SHOKARTH - RAP 3',
-                'location' => '12 Trịnh Đình Thảo, Phường Hòa Thạnh, Quận Tân Phú, Thành phố Hồ Chí Minh',
-            ],
-            [
-                'name' => 'Cinema SHOKARTH - RAP 4',
-                'location' => '12 Trịnh Đình Thảo, Phường Hòa Thạnh, Quận Tân Phú, Thành phố Hồ Chí Minh',
-            ],
+//            [
+//                'name' => 'Cinema SHOKARTH - RAP 3',
+//                'location' => '12 Trịnh Đình Thảo, Phường Hòa Thạnh, Quận Tân Phú, Thành phố Hồ Chí Minh',
+//            ],
+//            [
+//                'name' => 'Cinema SHOKARTH - RAP 4',
+//                'location' => '12 Trịnh Đình Thảo, Phường Hòa Thạnh, Quận Tân Phú, Thành phố Hồ Chí Minh',
+//            ],
         ]);
 //        Cinema::factory(0)->create(); // Create 10 cinemas
     }

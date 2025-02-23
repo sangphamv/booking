@@ -14,7 +14,6 @@ class ShowtimeController extends Controller
      */
     public function index()
     {
-//        $showtimes = Showtime::with(['movie', 'cinema'])->get();
         $showtimes = Showtime::with(['movie', 'cinema'])
             ->orderBy('cinema_id')
             ->orderBy('movie_id')

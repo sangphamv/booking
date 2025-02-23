@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Movie;
+use App\Models\Cinema;
+use App\Models\Showtime;
+
 
 class BookingController extends Controller
 {
@@ -12,6 +16,7 @@ class BookingController extends Controller
     public function index()
     {
         //
+
     }
 
     /**
@@ -19,7 +24,11 @@ class BookingController extends Controller
      */
     public function create()
     {
-        //
+        $movies = Movie::all();
+        $cinemas = Cinema::all();
+        $showtimes = Showtime::all();
+
+        return view('app.booking-movie', compact('movies', 'cinemas', 'showtimes'));
     }
 
     /**

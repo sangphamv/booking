@@ -13,11 +13,13 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CinemaController;
 use App\Http\Controllers\ShowtimeController;
+use App\Http\Controllers\BookingController;
 
 Route::get('/', [MovieController::class, 'indexWelcome'])->name('welcome');
 Route::get('/movie/{movie}', [MovieController::class, 'showMovie'])->name('movie.show');
 Route::get('/list-movie', [MovieController::class, 'indexListMovie'])->name('movie.index');
 
+Route::get('/booking', [BookingController::class, 'create'])->name('booking.create');
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
