@@ -12,21 +12,24 @@
         <div class="grid grid-cols-2 gap-4 mb-4">
             <div class="p-4 bg-white rounded-lg shadow-lg border-1 border-gray-100 flex flex-col gap-4">
                 <label class="block mb-2 font-semibold">Chọn phim</label>
-                <select id="movieSelect" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <select id="movieSelect"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     @foreach($movies as $movie)
                         <option value="{{ $movie->id }}">{{ $movie->title }}</option>
                     @endforeach
                 </select>
 
                 <label class="block mb-2 font-semibold">Chọn rạp</label>
-                <select id="cinemaSelect" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <select id="cinemaSelect"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     @foreach($cinemas as $cinema)
                         <option value="{{ $cinema->id }}">{{ $cinema->name }}</option>
                     @endforeach
                 </select>
 
                 <label class="block mb-2 font-semibold">Chọn suất chiếu</label>
-                <select id="showtimeSelect" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 uppercase">
+                <select id="showtimeSelect"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 uppercase">
                     @foreach($showtimes as $showtime)
                         <option value="{{ $showtime->id }}" data-movie="{{ $showtime->movie_id }}"
                                 data-cinema="{{ $showtime->cinema_id }}">
@@ -36,7 +39,7 @@
                 </select>
             </div>
             <div class="p-4 bg-white rounded-lg shadow-lg border-1 border-gray-100 flex flex-col gap-4">
-{{--                <label class="block mb-2 font-semibold">Chọn ghế</label>--}}
+                {{--                <label class="block mb-2 font-semibold">Chọn ghế</label>--}}
                 <div class="gap-4 mb-4">
                     <div class="col-span-6">
                         <label class="block mb-2 font-semibold">Chọn ghế</label>
@@ -143,8 +146,14 @@
         </script>
 
         <div class="flex gap-4">
-            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full shadow-lg">ĐẶT VÉ</button>
-            <button class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 w-full shadow-lg">HỦY ĐẶT</button>
+            <button
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full shadow-lg">
+                ĐẶT VÉ
+            </button>
+            <button
+                class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 w-full shadow-lg">
+                HỦY ĐẶT
+            </button>
         </div>
     </div>
 @endsection

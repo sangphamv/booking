@@ -63,6 +63,7 @@ class SeatController extends Controller
     {
         $request->validate([
             'cinema_id' => 'required|exists:cinemas,id',
+            'row_num' => 'required|integer',
             'seat_num' => 'required|integer',
             'available' => 'required|boolean',
         ]);

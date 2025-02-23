@@ -19,6 +19,7 @@ Route::get('/', [MovieController::class, 'indexWelcome'])->name('welcome');
 Route::get('/movie/{movie}', [MovieController::class, 'showMovie'])->name('movie.show');
 Route::get('/list-movie', [MovieController::class, 'indexListMovie'])->name('movie.index');
 
+
 Route::get('/booking', [BookingController::class, 'create'])->name('booking.create');
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -33,7 +34,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('movie', MovieController::class);
     Route::resource('cinema', CinemaController::class);
     Route::resource('showtime', ShowtimeController::class);
-    Route::get('showtime/{showtime}/seat', [ShowtimeController::class, 'seat'])->name('showtime.seat');
+    Route::get('booking', [BookingController::class, 'index'])->name('booking.index');
 });
 
 Route::middleware(['auth', 'role:user'])->prefix('user')->name('user.')->group(function () {
