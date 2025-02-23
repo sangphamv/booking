@@ -46,7 +46,7 @@ class ShowtimeController extends Controller
 
         Showtime::create($request->all());
 
-        return redirect()->route('admin.showtime.index')->with('success', 'Showtime created successfully.');
+        return redirect()->route('admin.showtime.index')->with('success', 'Thêm suất chiếu thành công.');
     }
 
     /**
@@ -84,7 +84,7 @@ class ShowtimeController extends Controller
         $showtime = Showtime::findOrFail($id);
         $showtime->update($request->all());
 
-        return redirect()->route('admin.showtime.index')->with('success', 'Showtime updated successfully.');
+        return redirect()->route('admin.showtime.index')->with('update', 'Câp nhât suất chiếu thành công.');
     }
 
     /**
@@ -95,6 +95,6 @@ class ShowtimeController extends Controller
         $showtime = Showtime::findOrFail($id);
         $showtime->delete();
 
-        return redirect()->route('admin.showtime.index')->with('success', 'Showtime deleted successfully.');
+        return redirect()->route('admin.showtime.index')->with('destroy', 'Xóa suất chiếu thành công.');
     }
 }

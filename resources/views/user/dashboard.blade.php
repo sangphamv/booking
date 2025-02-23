@@ -84,4 +84,12 @@
             </div>
         </div>
     </div>
+
+    @foreach (['user','success'] as $msg)
+        @if(session($msg))
+            <x-toast type="{{ $msg }}">
+                {{ session($msg) }}
+            </x-toast>
+        @endif
+    @endforeach
 @endsection

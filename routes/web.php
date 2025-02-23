@@ -34,7 +34,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('movie', MovieController::class);
     Route::resource('cinema', CinemaController::class);
     Route::resource('showtime', ShowtimeController::class);
-    Route::get('booking', [BookingController::class, 'index'])->name('booking.index');
+    Route::resource('booking', BookingController::class);
 });
 
 Route::middleware(['auth', 'role:user'])->prefix('user')->name('user.')->group(function () {

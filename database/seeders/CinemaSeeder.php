@@ -16,22 +16,21 @@ class CinemaSeeder extends Seeder
     {
         DB::table('cinemas')->insert([
             [
-                'name' => 'Cinema SHOKARTH - RAP 1',
+                'name' => 'Cinema SHOKARTH TAN PHU - RAP 1',
                 'location' => '12 Trịnh Đình Thảo, Phường Hòa Thạnh, Quận Tân Phú, Thành phố Hồ Chí Minh',
             ],
             [
-                'name' => 'Cinema SHOKARTH - RAP 2',
+                'name' => 'Cinema SHOKARTH TAN PHU - RAP 2',
                 'location' => '12 Trịnh Đình Thảo, Phường Hòa Thạnh, Quận Tân Phú, Thành phố Hồ Chí Minh',
             ],
-//            [
-//                'name' => 'Cinema SHOKARTH - RAP 3',
-//                'location' => '12 Trịnh Đình Thảo, Phường Hòa Thạnh, Quận Tân Phú, Thành phố Hồ Chí Minh',
-//            ],
-//            [
-//                'name' => 'Cinema SHOKARTH - RAP 4',
-//                'location' => '12 Trịnh Đình Thảo, Phường Hòa Thạnh, Quận Tân Phú, Thành phố Hồ Chí Minh',
-//            ],
+            [
+                'name' => 'Cinema SHOKARTH BINH TAN - RAP 1',
+                'location' => '12 Tên Lửa, Phường Bình Trị Đông B, Quận Bình Tân, Thành phố Hồ Chí Minh',
+            ],
+            [
+                'name' => 'Cinema SHOKARTH BINH TAN - RAP 2',
+                'location' => '12 Tên Lửa, Phường Bình Trị Đông B, Quận Bình Tân, Thành phố Hồ Chí Minh',
+            ],
         ]);
-//        Cinema::factory(0)->create(); // Create 10 cinemas
     }
 }

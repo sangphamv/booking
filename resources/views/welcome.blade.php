@@ -189,4 +189,11 @@
             </div>
         </div>
     </div>
+    @foreach (['logout'] as $msg)
+        @if(session($msg))
+            <x-toast type="{{ $msg }}">
+                {{ session($msg) }}
+            </x-toast>
+        @endif
+    @endforeach
 @endsection

@@ -30,7 +30,7 @@ class CinemaController extends Controller
 
         Cinema::create($request->all());
 
-        return redirect()->route('admin.cinema.index')->with('success', 'Cinema created successfully.');
+        return redirect()->route('admin.cinema.index')->with('success', 'Thêm rạp thành công.');
     }
 
     // 4. Display the specified resource.
@@ -55,7 +55,7 @@ class CinemaController extends Controller
 
         $cinema->update($request->all());
 
-        return redirect()->route('admin.cinema.index')->with('success', 'Cinema updated successfully.');
+        return redirect()->route('admin.cinema.index')->with('update', 'Cập nhật rạp thành công.');
     }
 
     // 7. Remove the specified resource from storage.
@@ -63,6 +63,6 @@ class CinemaController extends Controller
     {
         $cinema->delete();
 
-        return redirect()->route('admin.cinema.index')->with('success', 'Cinema deleted successfully.');
+        return redirect()->route('admin.cinema.index')->with('destroy', 'Xóa rạp thành công.');
     }
 }

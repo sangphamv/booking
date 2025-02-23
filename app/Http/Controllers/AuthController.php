@@ -24,10 +24,10 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role === 'admin') {
-                return redirect()->intended('admin/dashboard');
+                return redirect()->intended('admin/dashboard')->with('success', 'Đăng nhập tài khoản thành công.');
             }
 
-            return redirect()->intended('user/dashboard');
+            return redirect()->intended('user/dashboard')->with('success', 'Đăng nhập tài khoản thành công.');
         }
 
         return back()->withErrors([
@@ -61,10 +61,10 @@ class AuthController extends Controller
         Auth::login($user);
 
         if ($user->role === 'admin') {
-            return redirect()->intended('admin/dashboard');
+            return redirect()->intended('admin/dashboard')->with('admin', 'Đăng ký tài khoản thành công.');
         }
 
-        return redirect()->intended('user/dashboard');
+        return redirect()->intended('user/dashboard')->with('user', 'Đăng ký tài khoản thành công.');
     }
 
     // 5. Xóa tài nguyên khỏi database (Đăng xuất)
@@ -75,7 +75,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('logout', 'Đăng xuất tài khoản thành công.');
     }
 
     // 6. Hiển thị trang dashboard cho admin

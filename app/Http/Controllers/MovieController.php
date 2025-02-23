@@ -54,7 +54,7 @@ class MovieController extends Controller
 
         Movie::create($request->all());
 
-        return redirect()->route('admin.movie.index')->with('success', 'Movie created successfully.');
+        return redirect()->route('admin.movie.index')->with('success', 'Thêm phim thành công');
     }
 
     // 4. Hiển thị một tài nguyên cụ thể (Chi tiết phim)
@@ -90,7 +90,7 @@ class MovieController extends Controller
 
         $movie->update($request->all());
 
-        return redirect()->route('admin.movie.index')->with('success', 'Movie updated successfully.');
+        return redirect()->route('admin.movie.index')->with('update', 'Cập nhật phim thành công');
     }
 
     // 7. Xóa một tài nguyên khỏi database (Xóa phim)
@@ -98,6 +98,6 @@ class MovieController extends Controller
     {
         $movie->delete();
 
-        return redirect()->route('admin.movie.index')->with('success', 'Movie deleted successfully.');
+        return redirect()->route('admin.movie.index')->with('destroy', 'Xóa phim thành công');
     }
 }

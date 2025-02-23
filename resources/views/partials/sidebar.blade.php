@@ -90,7 +90,7 @@
                     </li>
                     <li>
                         <a
-                            href="#"
+                            href="{{ route('admin.booking.index') }}"
                             class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group  :bg-gray-700"
                         >
                             <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"

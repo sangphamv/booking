@@ -205,4 +205,12 @@
             </div>
         </div>
     </div>
+
+    @foreach (['success', 'error', 'warning', 'update', 'destroy'] as $msg)
+        @if(session($msg))
+            <x-toast type="{{ $msg }}">
+                {{ session($msg) }}
+            </x-toast>
+        @endif
+    @endforeach
 @endsection

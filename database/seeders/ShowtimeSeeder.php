@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Showtime;
+use Illuminate\Support\Facades\DB;
 
 class ShowtimeSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class ShowtimeSeeder extends Seeder
      */
     public function run()
     {
-        Showtime::factory()->count(30)->create();
+        Showtime::factory()->count(60)->create();
     }
 }

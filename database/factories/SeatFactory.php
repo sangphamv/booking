@@ -1,0 +1,22 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Seat;
+use App\Models\Cinema;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class SeatFactory extends Factory
+{
+    protected $model = Seat::class;
+
+    public function definition()
+    {
+        return [
+            'cinema_id' => Cinema::factory(),
+            'row_num' => $this->faker->numberBetween(1, 10),
+            'seat_num' => $this->faker->numberBetween(1, 6),
+            'available' => $this->faker->boolean,
+        ];
+    }
+}

@@ -38,7 +38,7 @@ class UserController extends Controller
             'role' => $request->role,
         ]);
 
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('success', 'Thêm user thành công');
     }
 
     // 4. Hiển thị một tài nguyên cụ thể (Chi tiết người dùng) OK
@@ -70,14 +70,14 @@ class UserController extends Controller
             'role' => $request->role,
         ]);
 
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('update', 'Cập nhật user thành công');
     }
 
     // 7. Xoá tài nguyên khỏi database (Xoá người dùng) OK
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('destroy', 'Xóa user thành công');
     }
     ///////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////
@@ -109,8 +109,6 @@ class UserController extends Controller
             'password' => $request->password ? Hash::make($request->password) : $user->password,
         ]);
         return redirect()->route('user.show', $user->id)->with('success', 'User updated successfully');
-
-
     }
 
     public function userDestroy($id)

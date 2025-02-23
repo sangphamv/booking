@@ -11,7 +11,8 @@
             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg ">
                 <div class="shadow-xl rounded-xl flex items-center justify-center h-56 mb-4 bg-gray-50 ">
                     <div class="w-full h-full rounded-xl flex items-center justify-center bg-black relative">
-                        <div class="absolute rounded-xl inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
+                        <div
+                            class="absolute rounded-xl inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
 
                         <h1 class="text-gray-100 text-6xl font-bold">Admin Dashboard</h1>
                     </div>
@@ -21,8 +22,11 @@
                         class="w-56 p-4 shadow-lg rounded-2xl border border-gray-200 bg-white flex items-center justify-between">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 flex items-center justify-center bg-blue-500 rounded-full">
-                                <svg class="w-8 h-8 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
+                                <svg class="w-8 h-8 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                     width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                          d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z"
+                                          clip-rule="evenodd"/>
                                 </svg>
                             </div>
                             <div>
@@ -35,8 +39,11 @@
                         class="w-56 p-4 shadow-lg rounded-2xl border border-gray-200 bg-white flex items-center justify-between">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 flex items-center justify-center bg-blue-500 rounded-full">
-                                <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd" d="M19.003 3A2 2 0 0 1 21 5v2h-2V5.414L17.414 7h-2.828l2-2h-2.172l-2 2H9.586l2-2H9.414l-2 2H3V5a2 2 0 0 1 2-2h14.003ZM3 9v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9H3Zm2-2.414L6.586 5H5v1.586Zm4.553 4.52a1 1 0 0 1 1.047.094l4 3a1 1 0 0 1 0 1.6l-4 3A1 1 0 0 1 9 18v-6a1 1 0 0 1 .553-.894Z" clip-rule="evenodd"/>
+                                <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                     width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                          d="M19.003 3A2 2 0 0 1 21 5v2h-2V5.414L17.414 7h-2.828l2-2h-2.172l-2 2H9.586l2-2H9.414l-2 2H3V5a2 2 0 0 1 2-2h14.003ZM3 9v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9H3Zm2-2.414L6.586 5H5v1.586Zm4.553 4.52a1 1 0 0 1 1.047.094l4 3a1 1 0 0 1 0 1.6l-4 3A1 1 0 0 1 9 18v-6a1 1 0 0 1 .553-.894Z"
+                                          clip-rule="evenodd"/>
                                 </svg>
                             </div>
                             <div>
@@ -106,6 +113,11 @@
         </div>
     </div>
 
-
-
+    @foreach (['admin','success'] as $msg)
+        @if(session($msg))
+            <x-toast type="{{ $msg }}">
+                {{ session($msg) }}
+            </x-toast>
+        @endif
+    @endforeach
 @endsection

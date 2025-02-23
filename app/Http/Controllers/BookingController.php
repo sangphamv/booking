@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Cinema;
 use App\Models\Showtime;
-
+use App\Models\Booking;
 
 class BookingController extends Controller
 {
@@ -15,8 +15,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
-
+        $bookings = Booking::all();
+        return view('admin.booking', compact('bookings'));
     }
 
     /**
@@ -36,7 +36,16 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'movie_id' => 'required|exists:movies,id',
+            'cinema_id' => 'required|exists:cinemas,id',
+            'showtime_id' => 'required|exists:showtimes,id',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        Booking::create($validatedData);
+
+        return redirect()->route('bookings.index')->with('success', 'Booking created successfully.');
     }
 
     /**
@@ -44,7 +53,8 @@ class BookingController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $booking = Booking::findOrFail($id);
+        return view('app.bookings.show', compact('booking'));
     }
 
     /**
@@ -52,7 +62,12 @@ class BookingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $booking = Booking::findOrFail($id);
+        $movies = Movie::all();
+        $cinemas = Cinema::all();
+        $showtimes = Showtime::all();
+
+        return view('app.bookings.edit', compact('booking', 'movies', 'cinemas', 'showtimes'));
     }
 
     /**
@@ -60,7 +75,17 @@ class BookingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'movie_id' => 'required|exists:movies,id',
+            'cinema_id' => 'required|exists:cinemas,id',
+            'showtime_id' => 'required|exists:showtimes,id',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        $booking = Booking::findOrFail($id);
+        $booking->update($validatedData);
+
+        return redirect()->route('bookings.index')->with('success', 'Booking updated successfully.');
     }
 
     /**
@@ -68,6 +93,9 @@ class BookingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $booking = Booking::findOrFail($id);
+        $booking->delete();
+
+        return redirect()->route('bookings.index')->with('success', 'Booking deleted successfully.');
     }
 }

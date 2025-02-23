@@ -193,18 +193,21 @@
                                 <td class="p-4 text-center text-base font-medium text-gray-900 whitespace-nowrap">
                                     {{ $showtime->id }}
                                 </td>
-                                <td class="p-4 text-base font-medium text-gray-900 max-w-sm truncate">
-                                    {{ $showtime->movie->id }} - {{ $showtime->movie->title }}
+                                <td class="p-4 text-base font-medium text-gray-900 max-w-xs truncate">
+                                    {{ $showtime->movie->title }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $showtime->cinema->id }} - {{ $showtime->cinema->name }}
+                                    {{ str_replace('Cinema', '', $showtime->cinema->name) }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ \Carbon\Carbon::parse($showtime->start_time)->format('d/m/Y') }}                                </td>
+                                    {{ \Carbon\Carbon::parse($showtime->start_time)->format('d/m/Y') }}
+                                </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ \Carbon\Carbon::parse($showtime->start_time)->format('H:i') }}                                </td>
+                                    {{ \Carbon\Carbon::parse($showtime->start_time)->format('H:i') }}
+                                </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ \Carbon\Carbon::parse($showtime->end_time)->format('H:i') }}                                </td>
+                                    {{ \Carbon\Carbon::parse($showtime->end_time)->format('H:i') }}
+                                </td>
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <a
                                         href="{{ route('admin.showtime.edit', $showtime->id) }}"
@@ -259,6 +262,14 @@
             </div>
         </div>
     </div>
+
+    @foreach (['success', 'error', 'warning', 'update', 'destroy'] as $msg)
+        @if(session($msg))
+            <x-toast type="{{ $msg }}">
+                {{ session($msg) }}
+            </x-toast>
+        @endif
+    @endforeach
 @endsection
 
 
