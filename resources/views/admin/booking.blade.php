@@ -143,13 +143,19 @@
                                 scope="col"
                                 class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
                             >
+                                Thanh toán
+                            </th>
+                            <th
+                                scope="col"
+                                class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
+                            >
                                 Khách hàng
                             </th>
                             <th
                                 scope="col"
                                 class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
                             >
-                                Thanh toán
+                                Email
                             </th>
                             <th
                                 scope="col"
@@ -169,22 +175,25 @@
                                     {{ $booking->id }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 max-w-xs truncate">
-                                    {{ $booking->movie->title }}
+                                    {{ $booking->user_id }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $booking->cinema->name }}
+                                    {{ $booking->showtime_id }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ \Carbon\Carbon::parse($booking->start_time)->format('d/m/Y, H:i') }}
+                                    {{ $booking->seat_id }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    Khách hàng
+                                    {{ $booking->seat_id }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    Thanh toán
+                                    {{ $booking->payment_status }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $booking->customer->name }}
+                                    {{ $booking->customer_name }}
+                                </td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
+                                    {{ $booking->customer_email }}
                                 </td>
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <a

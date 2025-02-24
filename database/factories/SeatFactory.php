@@ -12,8 +12,9 @@ class SeatFactory extends Factory
 
     public function definition()
     {
+        $cinema = Cinema::inRandomOrder()->first();
         return [
-            'cinema_id' => Cinema::factory(),
+            'cinema_id' => $cinema->id,
             'row_num' => $this->faker->numberBetween(1, 10),
             'seat_num' => $this->faker->numberBetween(1, 6),
             'available' => $this->faker->boolean,

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             CinemaSeeder::class,
             ShowtimeSeeder::class,
             SeatSeeder::class,
+            BookingSeeder::class,
         ]);
     }
 }

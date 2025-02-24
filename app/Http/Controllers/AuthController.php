@@ -30,9 +30,7 @@ class AuthController extends Controller
             return redirect()->intended('user/dashboard')->with('success', 'Đăng nhập tài khoản thành công.');
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->with('error', 'Đăng nhập tài khoản thất bại.');
+        return back()->with('error', 'Đăng nhập tài khoản thất bại.');
     }
 
     // 3. Hiển thị form đăng ký (Form đăng ký)
