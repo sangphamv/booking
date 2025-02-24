@@ -33,10 +33,9 @@
                                         clip-rule="evenodd"></path>
                                     >
                                 </svg>
-                                <a
-                                    href="#"
-                                    class="ml-1 text-gray-700 hover:text-blue-600 md:ml-2 :text-gray-300 :hover:text-white"
-                                >Thêm suất chiếu</a
+                                <span
+                                    class="ml-1 text-gray-400 md:ml-2 :text-gray-300 :hover:text-white"
+                                >Thêm suất chiếu</span
                                 >
                             </div>
                         </li>

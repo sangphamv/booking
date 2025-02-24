@@ -14,7 +14,7 @@
                     >
                         <li class="inline-flex items-center">
                             <a
-                                href="#"
+                                href="{{ route('user.show' , ['id' => Auth::user()->id]) }}"
                                 class="inline-flex items-center text-gray-700 hover:text-blue-600 :text-gray-300 :hover:text-white"
                             >
                                 Quản lý tài khoản

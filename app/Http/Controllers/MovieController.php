@@ -52,9 +52,14 @@ class MovieController extends Controller
             'price' => 'required|numeric',
         ]);
 
-        Movie::create($request->all());
-
-        return redirect()->route('admin.movie.index')->with('success', 'Thêm phim thành công');
+//        Movie::create($request->all());
+//        return redirect()->route('admin.movie.index')->with('success', 'Thêm phim thành công');
+        try {
+            Movie::create($request->all());
+            return redirect()->route('admin.movie.index')->with('success', 'Thêm phim thành công');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Thêm phim thất bại');
+        }
     }
 
     // 4. Hiển thị một tài nguyên cụ thể (Chi tiết phim)
@@ -88,16 +93,24 @@ class MovieController extends Controller
             'price' => 'required|numeric',
         ]);
 
-        $movie->update($request->all());
-
-        return redirect()->route('admin.movie.index')->with('update', 'Cập nhật phim thành công');
+//        $movie->update($request->all());
+//        return redirect()->route('admin.movie.index')->with('update', 'Cập nhật phim thành công');
+        try {
+            $movie->update($request->all());
+            return redirect()->route('admin.movie.index')->with('update', 'Cập nhật phim thành công');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Cập nhật phim thất bại');
+        }
     }
 
     // 7. Xóa một tài nguyên khỏi database (Xóa phim)
     public function destroy(Movie $movie)
     {
-        $movie->delete();
-
-        return redirect()->route('admin.movie.index')->with('destroy', 'Xóa phim thành công');
+        try {
+            $movie->delete();
+            return redirect()->route('admin.movie.index')->with('destroy', 'Xóa phim thành công');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Xóa phim thất bại');
+        }
     }
 }

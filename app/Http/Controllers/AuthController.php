@@ -32,7 +32,7 @@ class AuthController extends Controller
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
-        ]);
+        ])->with('error', 'Đăng nhập tài khoản thất bại.');
     }
 
     // 3. Hiển thị form đăng ký (Form đăng ký)
@@ -54,17 +54,16 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-//            'role' => $request->role,
             'role' => $request->input('role', 'user'),
         ]);
 
         Auth::login($user);
 
-        if ($user->role === 'admin') {
-            return redirect()->intended('admin/dashboard')->with('admin', 'Đăng ký tài khoản thành công.');
+        if ($user->role === 'user') {
+            return redirect()->intended('user/dashboard')->with('success', 'Đăng ký tài khoản thành công.');
         }
 
-        return redirect()->intended('user/dashboard')->with('user', 'Đăng ký tài khoản thành công.');
+        return redirect()->route('register')->with('error', 'Đăng ký tài khoản thất bại.');
     }
 
     // 5. Xóa tài nguyên khỏi database (Đăng xuất)

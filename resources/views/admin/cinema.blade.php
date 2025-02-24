@@ -34,10 +34,10 @@
                                         clip-rule="evenodd"></path>
                                 </svg
                                 >
-                                <a
+                                <span
                                     href="#"
-                                    class="ml-1 text-gray-700 hover:text-blue-600 md:ml-2 :text-gray-300 :hover:text-white"
-                                >Tất cả rạp chiếu phim</a
+                                    class="ml-1 text-gray-400 md:ml-2 :text-gray-300 :hover:text-white"
+                                >Tất cả rạp chiếu phim</span
                                 >
                             </div>
                         </li>
@@ -206,7 +206,7 @@
         </div>
     </div>
 
-    @foreach (['success', 'error', 'warning', 'update', 'destroy'] as $msg)
+    @foreach (['success', 'error', 'update', 'destroy'] as $msg)
         @if(session($msg))
             <x-toast type="{{ $msg }}">
                 {{ session($msg) }}

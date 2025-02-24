@@ -28,9 +28,12 @@ class CinemaController extends Controller
             'location' => 'required|string|max:255',
         ]);
 
-        Cinema::create($request->all());
-
-        return redirect()->route('admin.cinema.index')->with('success', 'Thêm rạp thành công.');
+        try {
+            Cinema::create($request->all());
+            return redirect()->route('admin.cinema.index')->with('success', 'Thêm rạp thành công.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Thêm rạp thất bại.');
+        }
     }
 
     // 4. Display the specified resource.
@@ -53,16 +56,22 @@ class CinemaController extends Controller
             'location' => 'required|string|max:255',
         ]);
 
-        $cinema->update($request->all());
-
-        return redirect()->route('admin.cinema.index')->with('update', 'Cập nhật rạp thành công.');
+        try {
+            $cinema->update($request->all());
+            return redirect()->route('admin.cinema.index')->with('update', 'Cập nhật rạp thành công.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Cập nhật rạp thất bại.');
+        }
     }
 
     // 7. Remove the specified resource from storage.
     public function destroy(Cinema $cinema)
     {
-        $cinema->delete();
-
-        return redirect()->route('admin.cinema.index')->with('destroy', 'Xóa rạp thành công.');
+        try {
+            $cinema->delete();
+            return redirect()->route('admin.cinema.index')->with('destroy', 'Xóa rạp thành công.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Xóa rạp thất bại.');
+        }
     }
 }

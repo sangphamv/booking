@@ -1,6 +1,6 @@
 
 
-<footer class="bg-gray-50 rounded-lg shadow-sm">
+<footer class="bg-gray-100 rounded-lg shadow-sm">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
             <x-logo>

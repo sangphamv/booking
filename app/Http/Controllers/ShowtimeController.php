@@ -44,9 +44,12 @@ class ShowtimeController extends Controller
             'end_time' => 'required|date|after:start_time',
         ]);
 
-        Showtime::create($request->all());
-
-        return redirect()->route('admin.showtime.index')->with('success', 'Thêm suất chiếu thành công.');
+        try {
+            Showtime::create($request->all());
+            return redirect()->route('admin.showtime.index')->with('success', 'Thêm suất chiếu thành công.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Thêm suất chiếu thất bại.');
+        }
     }
 
     /**
@@ -81,10 +84,13 @@ class ShowtimeController extends Controller
             'end_time' => 'required|date|after:start_time',
         ]);
 
-        $showtime = Showtime::findOrFail($id);
-        $showtime->update($request->all());
-
-        return redirect()->route('admin.showtime.index')->with('update', 'Câp nhât suất chiếu thành công.');
+        try {
+            $showtime = Showtime::findOrFail($id);
+            $showtime->update($request->all());
+            return redirect()->route('admin.showtime.index')->with('update', 'Câp nhật suất chiếu thành công.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Cập nhật suất chiếu thất bại.');
+        }
     }
 
     /**
@@ -92,9 +98,12 @@ class ShowtimeController extends Controller
      */
     public function destroy(string $id)
     {
-        $showtime = Showtime::findOrFail($id);
-        $showtime->delete();
-
-        return redirect()->route('admin.showtime.index')->with('destroy', 'Xóa suất chiếu thành công.');
+        try {
+            $showtime = Showtime::findOrFail($id);
+            $showtime->delete();
+            return redirect()->route('admin.showtime.index')->with('destroy', 'Xóa suất chiếu thành công.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Xóa suất chiếu thất bại.');
+        }
     }
 }

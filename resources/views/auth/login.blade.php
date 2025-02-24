@@ -41,4 +41,11 @@
             </div>
         </div>
     </section>
+    @foreach (['error'] as $msg)
+        @if(session($msg))
+            <x-toast type="{{ $msg }}">
+                {{ session($msg) }}
+            </x-toast>
+        @endif
+    @endforeach
 @endsection
