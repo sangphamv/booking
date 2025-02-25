@@ -20,7 +20,7 @@ Route::get('/movie/{movie}', [MovieController::class, 'showMovie'])->name('movie
 Route::get('/list-movie', [MovieController::class, 'indexListMovie'])->name('movie.index');
 
 
-Route::get('/booking', [BookingController::class, 'create'])->name('booking.create');
+Route::get('/booking-seat', [BookingController::class, 'seat'])->name('booking.seat');
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);

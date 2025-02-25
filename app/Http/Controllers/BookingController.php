@@ -2,100 +2,83 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Showtime;
 use App\Models\Movie;
 use App\Models\Cinema;
-use App\Models\Showtime;
-use App\Models\Booking;
+
 
 class BookingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $bookings = Booking::all();
         return view('admin.booking', compact('bookings'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function seat()
+    {
+        $showtimes = Showtime::all();
+        $movies = Movie::all();
+        $bookings = Booking::all();
+        $cinemas = Cinema::all();
+        return view('app.booking-movie', compact('bookings','showtimes', 'movies', 'cinemas'));
+    }
+
     public function create()
     {
-        $movies = Movie::all();
-        $cinemas = Cinema::all();
+        $users = User::all();
         $showtimes = Showtime::all();
-
-        return view('app.booking-movie', compact('movies', 'cinemas', 'showtimes'));
+        return view('admin.booking.create', compact('users', 'showtimes'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'movie_id' => 'required|exists:movies,id',
-            'cinema_id' => 'required|exists:cinemas,id',
-            'showtime_id' => 'required|exists:showtimes,id',
+        $request->validate([
             'user_id' => 'required|exists:users,id',
+            'showtime_id' => 'required|exists:showtimes,id',
+            'seat_id' => 'required|exists:seats,id',
+            'payment_status' => 'required|in:Chờ xử lý,Hoàn thành',
+            'customer_name' => 'nullable|string|max:255',
+            'customer_email' => 'nullable|string|email|max:255',
         ]);
 
-        Booking::create($validatedData);
+        Booking::create($request->all());
 
-        return redirect()->route('bookings.index')->with('success', 'Booking created successfully.');
+        return redirect()->route('admin.booking.index')->with('success', 'Tạo mới thành công.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Booking $booking)
     {
-        $booking = Booking::findOrFail($id);
-        return view('app.bookings.show', compact('booking'));
+        return view('admin.booking.show', compact('booking'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Booking $booking)
     {
-        $booking = Booking::findOrFail($id);
-        $movies = Movie::all();
-        $cinemas = Cinema::all();
-        $showtimes = Showtime::all();
-
-        return view('app.bookings.edit', compact('booking', 'movies', 'cinemas', 'showtimes'));
+        return view('admin.booking.edit', compact('booking'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Booking $booking)
     {
-        $validatedData = $request->validate([
-            'movie_id' => 'required|exists:movies,id',
-            'cinema_id' => 'required|exists:cinemas,id',
+        $request->validate([
             'showtime_id' => 'required|exists:showtimes,id',
-            'user_id' => 'required|exists:users,id',
+            'seat_id' => 'required|exists:seats,id',
+            'payment_status' => 'required|in:Chờ xử lý,Hoàn thành',
+            'customer_name' => 'nullable|string|max:255',
+            'customer_email' => 'nullable|string|email|max:255',
         ]);
 
-        $booking = Booking::findOrFail($id);
-        $booking->update($validatedData);
+        $booking->update($request->all());
 
-        return redirect()->route('bookings.index')->with('success', 'Booking updated successfully.');
+        return redirect()->route('admin.booking.index')->with('update', 'Cập nhật thành công.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Booking $booking)
     {
-        $booking = Booking::findOrFail($id);
         $booking->delete();
 
-        return redirect()->route('bookings.index')->with('success', 'Booking deleted successfully.');
+        return redirect()->route('admin.booking.index')->with('destroy', 'Xóa thành công.');
     }
 }

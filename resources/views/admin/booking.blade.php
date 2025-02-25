@@ -79,7 +79,7 @@
                         Refresh
                     </button>
                     <a
-                        href="{{route('admin.showtime.create')}}"
+                        href="{{route('admin.booking.create')}}"
                         class="inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto :bg-blue-600 :hover:bg-blue-700 :focus:ring-blue-800"
                     >
                         <svg
@@ -94,7 +94,7 @@
                                 clip-rule="evenodd"></path>
                         </svg
                         >
-                        Thêm suất chiếu
+                        Thêm mới
                     </a>
                 </div>
             </div>
@@ -172,7 +172,7 @@
                                 </td>
                                 <td class="p-4 space-x-2 whitespace-nowrap">
                                     <a
-                                        href="{{ route('admin.showtime.edit', $booking->id) }}"
+                                        href="{{ route('admin.booking.show', $booking->id) }}"
                                         class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 :bg-blue-600 :hover:bg-blue-700 :focus:ring-blue-800"
                                     >
                                         <svg
@@ -192,7 +192,7 @@
                                         Chi tiết
                                     </a>
                                     <a
-                                        href="{{ route('admin.showtime.edit', $booking->id) }}"
+                                        href="{{ route('admin.booking.edit', $booking->id) }}"
                                         class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 :bg-blue-600 :hover:bg-blue-700 :focus:ring-blue-800"
                                     >
                                         <svg
@@ -212,7 +212,7 @@
                                         Sửa
                                     </a>
                                     <form
-                                        action="{{ route('admin.showtime.destroy', $booking->id) }}"
+                                        action="{{ route('admin.booking.destroy', $booking->id) }}"
                                         method="POST"
                                         class="inline-flex"
                                         onsubmit="return confirm('Bạn có chắc chắn muốn xóa phim dùng này không?');">

@@ -12,11 +12,16 @@ class SeatFactory extends Factory
 
     public function definition(): array
     {
+        static $seatCounter = 0;
         $cinema = Cinema::inRandomOrder()->first();
+        $row_num = intdiv($seatCounter, 6) + 1;
+        $seat_num = ($seatCounter % 6) + 1;
+        $seatCounter++;
+
         return [
             'cinema_id' => $cinema->id,
-            'row_num' => $this->faker->numberBetween(1, 10),
-            'seat_num' => $this->faker->numberBetween(1, 6),
+            'row_num' => $row_num,
+            'seat_num' => $seat_num,
             'available' => $this->faker->boolean,
         ];
     }
