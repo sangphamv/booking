@@ -14,15 +14,6 @@ class BookingSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('bookings')->insert([
-            [
-                'user_id' => '1',
-                'showtime_id' => '1',
-                'seat_id' => '1',
-                'payment_status' => 'Pending',
-                'customer_name' => 'SangPham',
-                'customer_email' => 'sangphamv@gmail.com',
-            ],
-        ]);
+        Booking::factory()->count(10)->create();
     }
 }

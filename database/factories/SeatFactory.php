@@ -10,7 +10,7 @@ class SeatFactory extends Factory
 {
     protected $model = Seat::class;
 
-    public function definition()
+    public function definition(): array
     {
         $cinema = Cinema::inRandomOrder()->first();
         return [

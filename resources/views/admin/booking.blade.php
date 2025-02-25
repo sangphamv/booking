@@ -119,45 +119,28 @@
                                 scope="col"
                                 class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
                             >
-                                Tên phim
+                                Thông tin Booking
                             </th>
                             <th
                                 scope="col"
                                 class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
                             >
-                                Tên rạp
+                                Trạng thái
                             </th>
                             <th
                                 scope="col"
                                 class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
                             >
-                                Suất chiếu
+                                Tên khách hàng
                             </th>
                             <th
                                 scope="col"
                                 class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
                             >
-                                Vị trí ghế
+                                Email khách hàng
                             </th>
                             <th
-                                scope="col"
-                                class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
-                            >
-                                Thanh toán
-                            </th>
-                            <th
-                                scope="col"
-                                class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
-                            >
-                                Khách hàng
-                            </th>
-                            <th
-                                scope="col"
-                                class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
-                            >
-                                Email
-                            </th>
-                            <th
+
                                 scope="col"
                                 class="p-4 whitespace-nowrap text-xs font-medium text-left text-gray-500 uppercase"
                             >
@@ -175,16 +158,8 @@
                                     {{ $booking->id }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 max-w-xs truncate">
-                                    {{ $booking->user_id }}
-                                </td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $booking->showtime_id }}
-                                </td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $booking->seat_id }}
-                                </td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $booking->seat_id }}
+                                    {{ Carbon::parse($booking->showtime->start_time)->format('d/m, H:i') }}
+                                    - {{ $booking->showtime->movie->title }}
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
                                     {{ $booking->payment_status }}
@@ -192,7 +167,7 @@
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
                                     {{ $booking->customer_name }}
                                 </td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap">
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap truncate max-w-xs">
                                     {{ $booking->customer_email }}
                                 </td>
                                 <td class="p-4 space-x-2 whitespace-nowrap">

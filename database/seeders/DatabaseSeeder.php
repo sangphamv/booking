@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Tạo 1 user với role là admin
         $this->call([
             UserSeeder::class,
             MovieSeeder::class,
